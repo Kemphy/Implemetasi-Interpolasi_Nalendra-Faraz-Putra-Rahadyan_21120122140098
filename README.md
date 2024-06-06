@@ -1,3 +1,4 @@
+![Screenshot 2024-06-06 223717](https://github.com/Kemphy/Implemetasi-Interpolasi_Nalendra-Faraz-Putra-Rahadyan_21120122140098/assets/129735869/77f93404-dbae-42a6-98e8-f696b66e9da3)
 Diinginkan aplikasi untuk mencari solusi dari problem pengujian yang memperoleh data terbatas (data terlampir) dengan interpolasi masing-masing menggunakan metode:
 
 -polinom Langrange
@@ -13,4 +14,3 @@ Tugas mahasiswa:
 3. Mengunggah kode sumber tersebut ke Github dan setel sebagai publik. Berikan deskripsi yang memadai dari project tersebut
 
 4. Buat dokumen docx dan pdf yang menjelaskan alur kode dari (1), analisis hasil, dan penjabarannya
-![Screenshot 2024-06-06 223717](https://github.com/Kemphy/Implemetasi-Interpolasi_Nalendra-Faraz-Putra-Rahadyan_21120122140098/assets/129735869/77f93404-dbae-42a6-98e8-f696b66e9da3)
