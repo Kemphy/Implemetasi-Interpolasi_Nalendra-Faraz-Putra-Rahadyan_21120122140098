@@ -1,0 +1,68 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Data
+x = np.array([5, 10, 15, 20, 25, 30, 35, 40])
+y = np.array([40, 30, 25, 40, 18, 20, 22, 15])
+
+# Interpolasi Polinom Lagrange
+def lagrange_interpolation(x_points, y_points, x):
+    def L(k, x):
+        terms = [(x - x_points[j]) / (x_points[k] - x_points[j]) for j in range(len(x_points)) if j != k]
+        return np.prod(terms)
+    
+    P = sum(y_points[k] * L(k, x) for k in range(len(x_points)))
+    return P
+
+# Interpolasi Polinom Newton
+def newton_interpolation(x_points, y_points, x):
+    def divided_differences(x_points, y_points):
+        n = len(y_points)
+        coef = np.zeros([n, n])
+        coef[:,0] = y_points
+        
+        for j in range(1, n):
+            for i in range(n-j):
+                coef[i][j] = (coef[i+1][j-1] - coef[i][j-1]) / (x_points[i+j] - x_points[i])
+        
+        return coef[0, :]
+    
+    def newton_poly(coef, x_points, x):
+        n = len(coef) - 1
+        p = coef[n]
+        for k in range(1, n+1):
+            p = coef[n-k] + (x - x_points[n-k]) * p
+        return p
+    
+    coef = divided_differences(x_points, y_points)
+    return newton_poly(coef, x_points, x)
+
+# Tes and Plotting
+x_test = np.linspace(5, 40, 400)
+y_lagrange = [lagrange_interpolation(x, y, xi) for xi in x_test]
+y_newton = [newton_interpolation(x, y, xi) for xi in x_test]
+
+plt.figure(figsize=(14, 6))
+
+# Interpolasi Polinom Lagrange
+plt.subplot(1, 2, 1)
+plt.plot(x, y, 'o', label='Poin Data')
+plt.plot(x_test, y_lagrange, color='red', label='Polinom Lagrange')
+plt.xlabel('Tegangan, x (kg/mm^2)')
+plt.ylabel('Waktu patah, y (jam)')
+plt.title('Interpolasi Polinom Lagrange')
+plt.legend()
+plt.grid(True)
+
+# Interpolasi Polinom Newton
+plt.subplot(1, 2, 2)
+plt.plot(x, y, 'o', label='Poin Data')
+plt.plot(x_test, y_newton, color='blue', label='Polinom Newton')
+plt.xlabel('Tegangan, x (kg/mm^2)')
+plt.ylabel('Waktu patah, y (jam)')
+plt.title('Interpolasi Polinom Newton')
+plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
