@@ -1,7 +1,9 @@
 Diinginkan aplikasi untuk mencari solusi dari problem pengujian yang memperoleh data terbatas (data terlampir) dengan interpolasi masing-masing menggunakan metode:
 
 polinom Langrange
+
 polinom Newton
+
 Tugas mahasiswa:
 
 Mahasiswa membuat kode sumber dengan bahasa pemrograman yang dikuasai untuk mengimplementasikan solusi di atas
